@@ -218,7 +218,7 @@ menu "FreeRTOS kernel"
             config configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H
                 bool "configINCLUDE_FREERTOS_TASK_C_ADDITIONS_H"
                 select MCUX_COMPONENT_middleware.freertos-kernel.extension
-                default n
+                default y
                 help
                     No prefix in generated macro
                 # "Allow user defined functionality added to tasks.c"
