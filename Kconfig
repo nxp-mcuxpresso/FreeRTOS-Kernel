@@ -51,14 +51,25 @@ menu "FreeRTOS kernel"
                 A custom heap implementation must be provided externally.
     endchoice
 
+    config FREERTOS_USE_CUSTOM_CONFIG_FRAGMENT
+        bool "Include application specific FreeRTOS Configuration Header Fragment"
+        depends on MCUX_COMPONENT_middleware.freertos-kernel
+        default n
+        help
+            This option allows Application to include custom FreeRTOSConfig_frag.h fragment file.
+            Application is responsible to create and include file `FreeRTOSConfig_frag.h`.
+            In this file App can define its own code related to FreeRTOS Configuration.
+            This custom configuration is included into base FreeRTOSConfig.h file
+            after FreeRTOSConfig_Gen.h include.
+
     if MCUX_COMPONENT_middleware.freertos-kernel
         config MCUX_PRJSEG_middleware.freertos-kernel.generated_config
-                bool "Generate FreeRTOS configuration header"
-                depends on MCUX_COMPONENT_middleware.freertos-kernel
-                default y
-                help
-                    Generate the FreeRTOSConfig.h, otherwise users need to provide their
-                    own FreeRTOSConfig.h.
+            bool "Generate FreeRTOS configuration header"
+            depends on MCUX_COMPONENT_middleware.freertos-kernel
+            default y
+            help
+                Generate the FreeRTOSConfig.h, otherwise users need to provide their
+                own FreeRTOSConfig.h.
 
     if MCUX_PRJSEG_middleware.freertos-kernel.generated_config
 
@@ -74,7 +85,7 @@ menu "FreeRTOS kernel"
                     No prefix in generated macro
 
             #******************************************************************************#
-            #* Scheduling behaviour related definitions. **********************************#
+            #* Scheduling behavior related definitions. ***********************************#
             #******************************************************************************#
             config configTICK_RATE_HZ
                 int "configTICK_RATE_HZ"
