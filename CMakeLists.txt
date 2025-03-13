@@ -345,6 +345,24 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.extension)
     )
 endif ()
 
+if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.use_newlib_reentrant)
+    mcux_add_include(
+        INCLUDES include
+    )
+    mcux_add_source(
+        SOURCES include/newlib-freertos.h
+    )
+endif ()
+
+if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.use_picolibc_tls)
+    mcux_add_include(
+        INCLUDES include
+    )
+    mcux_add_source(
+        SOURCES include/picolibc-freertos.h
+    )
+endif ()
+
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.heap_1)
     mcux_add_source(
         SOURCES portable/MemMang/heap_1.c

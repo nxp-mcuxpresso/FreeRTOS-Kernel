@@ -222,6 +222,14 @@ menu "FreeRTOS kernel"
 
             config configUSE_NEWLIB_REENTRANT
                 bool "configUSE_NEWLIB_REENTRANT"
+                select MCUX_COMPONENT_middleware.freertos-kernel.use_newlib_reentrant
+                default n
+                help
+                    No prefix in generated macro
+
+            config configUSE_PICOLIBC_TLS
+                bool "configUSE_PICOLIBC_TLS"
+                select MCUX_COMPONENT_middleware.freertos-kernel.use_picolibc_tls
                 default n
                 help
                     No prefix in generated macro
@@ -834,6 +842,14 @@ menu "FreeRTOS kernel"
     config MCUX_COMPONENT_middleware.freertos-kernel.extension
         default n
         bool "Task Aware Debugger (TAD) support"
+
+    config MCUX_COMPONENT_middleware.freertos-kernel.use_newlib_reentrant
+        default n
+        bool
+
+    config MCUX_COMPONENT_middleware.freertos-kernel.use_picolibc_tls
+        default n
+        bool
 
         menuconfig MPU_SUPPORT
             bool "MPU wrappers"
