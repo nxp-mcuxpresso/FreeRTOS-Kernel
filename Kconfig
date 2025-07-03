@@ -657,6 +657,15 @@ menu "FreeRTOS kernel"
                     No prefix in generated macro
 
             #******************************************************************************#
+            #* Additional port Specific Configuration definitions. ************************#
+            #******************************************************************************#
+            config configTASK_RETURN_ADDRESS
+                string "configTASK_RETURN_ADDRESS"
+                default "(prvTaskExitError)"
+                help
+                    No prefix in generated macro
+
+            #******************************************************************************#
             #* Definitions that include or exclude functionality. *************************#
             #******************************************************************************#
             config configUSE_TASK_NOTIFICATIONS
