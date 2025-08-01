@@ -40,6 +40,10 @@
 #include "FreeRTOSConfig_frag.h"
 #endif
 
+#ifdef CONFIG_DEBUG_COREDUMP_MEMORY_DUMP_THREADS
+#include "FreeRTOSConfig_debug_coredump.h"
+#endif
+
 /* Handle macros required to be defined.
  * If these macros are not defined set them to 0.
  */
