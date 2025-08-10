@@ -42,6 +42,12 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel)
         CORES cm4f cm7f
     )
     mcux_add_include(
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_AARCH64_SRE
+        COMPILERS armclang gcc
+        TOOLCHAINS armgcc
+        CORES ca53 ca55
+    )
+    mcux_add_include(
         INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CA9
         TOOLCHAINS iar
         CORES ca7
@@ -145,6 +151,14 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel)
         COMPILERS armclang gcc
         TOOLCHAINS armgcc mcux mdk
         CORES cm4f cm7f
+    )
+    mcux_add_source(
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_AARCH64_SRE/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_AARCH64_SRE/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_AARCH64_SRE/portASM.S
+        COMPILERS armclang gcc
+        TOOLCHAINS armgcc
+        CORES ca53 ca55
     )
     mcux_add_source(
         SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CA9/port.c
