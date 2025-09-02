@@ -2,20 +2,20 @@
   "SPDXID": "SPDXRef-DOCUMENT",
   "spdxVersion": "SPDX-2.3",
   "creationInfo": {
-    "created": "2025-06-17T09:26:56Z",
+    "created": "2025-09-01T13:04:12Z",
     "creators": [
       "Organization: NXP"
     ],
     "licenseListVersion": "3.20"
   },
-  "name": "freertos-kernel-v25.06.00",
+  "name": "freertos-kernel-v25.09.00",
   "dataLicense": "CC0-1.0",
-  "documentNamespace": "https://nxp.com/spdx/2ab5a165-b510-4d28-8d5a-769639590c2e",
+  "documentNamespace": "https://nxp.com/spdx/f9ca050c-b73a-405a-b975-944e7d85e8d7",
   "packages": [
     {
-      "SPDXID": "SPDXRef-package-2ab5a165-b510-4d28-8d5a-769639590c2e",
+      "SPDXID": "SPDXRef-package-f9ca050c-b73a-405a-b975-944e7d85e8d7",
       "name": "freertos-kernel",
-      "versionInfo": "v25.06.00",
+      "versionInfo": "v25.09.00",
       "licenseConcluded": "(MIT)",
       "licenseDeclared": "(MIT)",
       "downloadLocation": "https://github.com/nxp-mcuxpresso/freertos-kernel",
@@ -49,16 +49,6 @@
           "referenceCategory": "SECURITY",
           "referenceLocator": "cpe:2.3:o:amazon:freertos:11.1.0:*:*:*:*:*:*:*",
           "referenceType": "cpe23Type"
-        },
-        {
-          "referenceCategory": "PACKAGE-MANAGER",
-          "referenceLocator": "pkg:github/FreeRTOS/FreeRTOS-Kernel@V11.1.0",
-          "referenceType": "purl"
-        },
-        {
-          "referenceCategory": "OTHER",
-          "referenceLocator": "787ec417-16a8-4a84-90a3-166358ca5713",
-          "referenceType": "BlackDuck-ComponentOrigin"
         }
       ],
       "filesAnalyzed": false
@@ -68,11 +58,11 @@
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
       "relationshipType": "DESCRIBES",
-      "relatedSpdxElement": "SPDXRef-package-2ab5a165-b510-4d28-8d5a-769639590c2e"
+      "relatedSpdxElement": "SPDXRef-package-f9ca050c-b73a-405a-b975-944e7d85e8d7"
     },
     {
-      "spdxElementId": "SPDXRef-package-2ab5a165-b510-4d28-8d5a-769639590c2e",
-      "relationshipType": "CONTAINS",
+      "spdxElementId": "SPDXRef-package-f9ca050c-b73a-405a-b975-944e7d85e8d7",
+      "relationshipType": "DYNAMIC_LINK",
       "relatedSpdxElement": "SPDXRef-package-6860d35e-9d89-4b6d-b8bb-33d8caf5250a"
     }
   ]
