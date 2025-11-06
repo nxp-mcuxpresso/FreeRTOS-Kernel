@@ -603,7 +603,7 @@ menu "FreeRTOS kernel"
             config configENABLE_TRUSTZONE
                 bool "configENABLE_TRUSTZONE"
                 default n
-                depends on MCUX_HW_SAU
+                depends on MCUX_HW_SAU || MCUX_HW_SECURITY_FIREWALL
                 help
                     No prefix in generated macro
                     Set to 1 when running FreeRTOS on the non-secure side to enable the
@@ -611,7 +611,7 @@ menu "FreeRTOS kernel"
 
             config configRUN_FREERTOS_SECURE_ONLY
                 bool "configRUN_FREERTOS_SECURE_ONLY"
-                default y if MCUX_HW_SAU
+                default y if MCUX_HW_SAU || MCUX_HW_SECURITY_FIREWALL
                 default n
                 help
                     No prefix in generated macro
