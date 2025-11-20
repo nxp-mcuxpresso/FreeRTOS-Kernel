@@ -87,7 +87,7 @@
 #define configSUPPORT_DYNAMIC_ALLOCATION  0
 #endif
 
-#if USE_PERCEPIO_TRACELYZER == 1
+#if defined(USE_PERCEPIO_TRACELYZER) && (USE_PERCEPIO_TRACELYZER == 1)
     /* Do not include if processing assembly file */
     #if (!defined(__IAR_SYSTEMS_ASM__) && !defined(__ASSEMBLER__))
     #   include "fsl_device_registers.h"
