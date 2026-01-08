@@ -2,20 +2,20 @@
   "SPDXID": "SPDXRef-DOCUMENT",
   "spdxVersion": "SPDX-2.3",
   "creationInfo": {
-    "created": "2025-06-17T09:26:56Z",
+    "created": "2026-01-08T03:53:58Z",
     "creators": [
       "Organization: NXP"
     ],
-    "licenseListVersion": "3.20"
+    "licenseListVersion": "3.26"
   },
-  "name": "freertos-kernel-v25.06.00",
+  "name": "freertos-kernel-v26.03.00-pvw1",
   "dataLicense": "CC0-1.0",
-  "documentNamespace": "https://nxp.com/spdx/2ab5a165-b510-4d28-8d5a-769639590c2e",
+  "documentNamespace": "https://nxp.com/spdx/4d54e6fe-62d4-4dd4-9721-22b0f0875b07",
   "packages": [
     {
-      "SPDXID": "SPDXRef-package-2ab5a165-b510-4d28-8d5a-769639590c2e",
+      "SPDXID": "SPDXRef-package-4d54e6fe-62d4-4dd4-9721-22b0f0875b07",
       "name": "freertos-kernel",
-      "versionInfo": "v25.06.00",
+      "versionInfo": "v26.03.00-pvw1",
       "licenseConcluded": "(MIT)",
       "licenseDeclared": "(MIT)",
       "downloadLocation": "https://github.com/nxp-mcuxpresso/freertos-kernel",
@@ -25,40 +25,40 @@
       "filesAnalyzed": false
     },
     {
-      "SPDXID": "SPDXRef-package-6860d35e-9d89-4b6d-b8bb-33d8caf5250a",
+      "SPDXID": "SPDXRef-package-b7b4d7f2-95ac-4480-93c9-ceeee76828c8",
       "name": "FreeRTOS Real Time Kernel",
-      "versionInfo": "V11.1.0",
+      "versionInfo": "V11.2.0",
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
       "homepage": "https://sourceforge.net/projects/freertos",
-      "downloadLocation": "NOASSERTION",
-      "originator": "Organization: NXP",
+      "downloadLocation": "https://github.com/FreeRTOS/FreeRTOS-Kernel/releases/tag/V11.2.0",
+      "originator": "Organization: freertos",
       "supplier": "NOASSERTION",
       "externalRefs": [
         {
+          "referenceCategory": "OTHER",
+          "referenceLocator": "9efdd2bb-848c-4c83-8d9e-f331ba338564",
+          "referenceType": "BlackDuck-ComponentOrigin"
+        },
+        {
           "referenceCategory": "SECURITY",
-          "referenceLocator": "cpe:2.3:a:amazon:freertos:11.1.0:*:*:*:*:*:*:*",
+          "referenceLocator": "cpe:2.3:a:amazon:aws-freertos-kernel:11.2.0:*:*:*:*:*:*:*",
           "referenceType": "cpe23Type"
         },
         {
           "referenceCategory": "SECURITY",
-          "referenceLocator": "cpe:2.3:a:amazon:aws-freertos-kernel:11.1.0:*:*:*:*:*:*:*",
+          "referenceLocator": "cpe:2.3:a:amazon:freertos:11.2.0:*:*:*:*:*:*:*",
           "referenceType": "cpe23Type"
         },
         {
           "referenceCategory": "SECURITY",
-          "referenceLocator": "cpe:2.3:o:amazon:freertos:11.1.0:*:*:*:*:*:*:*",
+          "referenceLocator": "cpe:2.3:o:amazon:freertos:11.2.0:*:*:*:*:*:*:*",
           "referenceType": "cpe23Type"
         },
         {
           "referenceCategory": "PACKAGE-MANAGER",
-          "referenceLocator": "pkg:github/FreeRTOS/FreeRTOS-Kernel@V11.1.0",
+          "referenceLocator": "pkg:github/FreeRTOS/FreeRTOS-Kernel@V11.2.0",
           "referenceType": "purl"
-        },
-        {
-          "referenceCategory": "OTHER",
-          "referenceLocator": "787ec417-16a8-4a84-90a3-166358ca5713",
-          "referenceType": "BlackDuck-ComponentOrigin"
         }
       ],
       "filesAnalyzed": false
@@ -68,12 +68,12 @@
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
       "relationshipType": "DESCRIBES",
-      "relatedSpdxElement": "SPDXRef-package-2ab5a165-b510-4d28-8d5a-769639590c2e"
+      "relatedSpdxElement": "SPDXRef-package-4d54e6fe-62d4-4dd4-9721-22b0f0875b07"
     },
     {
-      "spdxElementId": "SPDXRef-package-2ab5a165-b510-4d28-8d5a-769639590c2e",
+      "spdxElementId": "SPDXRef-package-4d54e6fe-62d4-4dd4-9721-22b0f0875b07",
       "relationshipType": "CONTAINS",
-      "relatedSpdxElement": "SPDXRef-package-6860d35e-9d89-4b6d-b8bb-33d8caf5250a"
+      "relatedSpdxElement": "SPDXRef-package-b7b4d7f2-95ac-4480-93c9-ceeee76828c8"
     }
   ]
 }
