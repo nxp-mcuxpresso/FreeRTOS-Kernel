@@ -335,13 +335,13 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_non_trustzone)
         INCLUDES portable/IAR/ARM_CM85_NTZ/non_secure
         TOOLCHAINS iar
         CORES cm85 cm85f
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_include(
         INCLUDES portable/GCC/ARM_CM85_NTZ/non_secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
         SOURCES portable/GCC/ARM_CM85_NTZ/non_secure/mpu_wrappers_v2_asm.c
@@ -352,7 +352,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_non_trustzone)
                 portable/GCC/ARM_CM85_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
         SOURCES portable/IAR/ARM_CM85_NTZ/non_secure/mpu_wrappers_v2_asm.S
@@ -363,7 +363,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_non_trustzone)
                 portable/IAR/ARM_CM85_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS iar
         CORES cm85 cm85f
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
     )
 
 endif ()
@@ -374,7 +374,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_trustzone.non_secure)
                  portable/IAR/ARM_CM85/secure
         TOOLCHAINS iar
         CORES cm85 cm85f
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_include(
@@ -382,7 +382,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_trustzone.non_secure)
                  portable/GCC/ARM_CM85/secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_source(
@@ -396,7 +396,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_trustzone.non_secure)
                 portable/GCC/ARM_CM85/secure/secure_init.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
         SOURCES portable/IAR/ARM_CM85/non_secure/mpu_wrappers_v2_asm.S
@@ -409,7 +409,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_trustzone.non_secure)
                 portable/IAR/ARM_CM85/secure/secure_init.h
         TOOLCHAINS iar
         CORES cm85 cm85f
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
     )
 endif ()
 
@@ -432,7 +432,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_trustzone.secure)
                 portable/GCC/ARM_CM85/secure/secure_port_macros.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_include(
@@ -631,7 +631,7 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.config)
         SOURCES template/ARM_CM85_4_priority_bits/FreeRTOSConfig_Gen.h
         CORES cm85 cm85f
         DEVICE_IDS MIMXRT2662xxxxx
-        FPU NO_FPU SP_FPU
+        FPU NO_FPU SP_FPU DP_FPU
         CONFIG TRUE
     )
     mcux_add_source(
