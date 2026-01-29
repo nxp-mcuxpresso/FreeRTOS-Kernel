@@ -29,6 +29,12 @@
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
 
+/* *INDENT-OFF* */
+#ifdef __cplusplus
+    extern "C" {
+#endif
+/* *INDENT-ON* */
+
 #if defined(__ICCARM__)||defined(__CC_ARM)||defined(__GNUC__)
     #include <stdint.h>
     extern uint32_t SystemCoreClock;
@@ -94,5 +100,11 @@
     #   include "trcKernelPort.h"
     #endif
 #endif
+
+/* *INDENT-OFF* */
+#ifdef __cplusplus
+    }
+#endif
+/* *INDENT-ON* */
 
 #endif /* FREERTOS_CONFIG_H */
