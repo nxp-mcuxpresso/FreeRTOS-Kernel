@@ -330,6 +330,132 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm33_trustzone.secure)
 
 endif ()
 
+if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm55_non_trustzone)
+    mcux_add_include(
+        INCLUDES portable/IAR/ARM_CM55_NTZ/non_secure
+        TOOLCHAINS iar
+        CORES cm55 cm55f
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+    mcux_add_include(
+        INCLUDES portable/GCC/ARM_CM55_NTZ/non_secure
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm55 cm55f
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+    mcux_add_source(
+        SOURCES portable/GCC/ARM_CM55_NTZ/non_secure/mpu_wrappers_v2_asm.c
+                portable/GCC/ARM_CM55_NTZ/non_secure/port.c
+                portable/GCC/ARM_CM55_NTZ/non_secure/portasm.c
+                portable/GCC/ARM_CM55_NTZ/non_secure/portasm.h
+                portable/GCC/ARM_CM55_NTZ/non_secure/portmacro.h
+                portable/GCC/ARM_CM55_NTZ/non_secure/portmacrocommon.h
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm55 cm55f
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+    mcux_add_source(
+        SOURCES portable/IAR/ARM_CM55_NTZ/non_secure/mpu_wrappers_v2_asm.S
+                portable/IAR/ARM_CM55_NTZ/non_secure/port.c
+                portable/IAR/ARM_CM55_NTZ/non_secure/portasm.h
+                portable/IAR/ARM_CM55_NTZ/non_secure/portasm.s
+                portable/IAR/ARM_CM55_NTZ/non_secure/portmacro.h
+                portable/IAR/ARM_CM55_NTZ/non_secure/portmacrocommon.h
+        TOOLCHAINS iar
+        CORES cm55 cm55f
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+
+endif ()
+
+if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm55_trustzone.non_secure)
+    mcux_add_include(
+        INCLUDES portable/IAR/ARM_CM55/non_secure
+                 portable/IAR/ARM_CM55/secure
+        TOOLCHAINS iar
+        CORES cm55 cm55f
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+
+    mcux_add_include(
+        INCLUDES portable/GCC/ARM_CM55/non_secure
+                 portable/GCC/ARM_CM55/secure
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm55 cm55f
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+
+    mcux_add_source(
+        SOURCES portable/GCC/ARM_CM55/non_secure/mpu_wrappers_v2_asm.c
+                portable/GCC/ARM_CM55/non_secure/port.c
+                portable/GCC/ARM_CM55/non_secure/portasm.c
+                portable/GCC/ARM_CM55/non_secure/portasm.h
+                portable/GCC/ARM_CM55/non_secure/portmacro.h
+                portable/GCC/ARM_CM55/non_secure/portmacrocommon.h
+                portable/GCC/ARM_CM55/secure/secure_context.h
+                portable/GCC/ARM_CM55/secure/secure_init.h
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm55 cm55f
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+    mcux_add_source(
+        SOURCES portable/IAR/ARM_CM55/non_secure/mpu_wrappers_v2_asm.S
+                portable/IAR/ARM_CM55/non_secure/port.c
+                portable/IAR/ARM_CM55/non_secure/portasm.h
+                portable/IAR/ARM_CM55/non_secure/portasm.s
+                portable/IAR/ARM_CM55/non_secure/portmacro.h
+                portable/IAR/ARM_CM55/non_secure/portmacrocommon.h
+                portable/IAR/ARM_CM55/secure/secure_context.h
+                portable/IAR/ARM_CM55/secure/secure_init.h
+        TOOLCHAINS iar
+        CORES cm55 cm55f
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+endif ()
+
+if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm55_trustzone.secure)
+
+    mcux_add_include(
+        INCLUDES portable/GCC/ARM_CM55/secure
+                 portable/GCC/ARM_CM55/non_secure
+        TOOLCHAINS armgcc mcux mdk
+    )
+
+    mcux_add_source(
+        SOURCES portable/GCC/ARM_CM55/secure/secure_context.c
+                portable/GCC/ARM_CM55/secure/secure_context.h
+                portable/GCC/ARM_CM55/secure/secure_context_port.c
+                portable/GCC/ARM_CM55/secure/secure_heap.c
+                portable/GCC/ARM_CM55/secure/secure_heap.h
+                portable/GCC/ARM_CM55/secure/secure_init.c
+                portable/GCC/ARM_CM55/secure/secure_init.h
+                portable/GCC/ARM_CM55/secure/secure_port_macros.h
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm55 cm55f
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+
+    mcux_add_include(
+        INCLUDES portable/IAR/ARM_CM55/secure
+                 portable/IAR/ARM_CM55/non_secure
+        TOOLCHAINS iar
+    )
+
+    mcux_add_source(
+        SOURCES portable/IAR/ARM_CM55/secure/secure_context.c
+                portable/IAR/ARM_CM55/secure/secure_context.h
+                portable/IAR/ARM_CM55/secure/secure_context_port_asm.s
+                portable/IAR/ARM_CM55/secure/secure_heap.c
+                portable/IAR/ARM_CM55/secure/secure_heap.h
+                portable/IAR/ARM_CM55/secure/secure_init.c
+                portable/IAR/ARM_CM55/secure/secure_init.h
+                portable/IAR/ARM_CM55/secure/secure_port_macros.h
+        TOOLCHAINS iar
+        CORES cm55 cm55f
+    )
+
+endif ()
+
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_non_trustzone)
     mcux_add_include(
         INCLUDES portable/IAR/ARM_CM85_NTZ/non_secure
@@ -625,6 +751,13 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.config)
         CORES cm33 cm33f
         DEVICE_IDS K32W133G K32W1X3H
         FPU NO_FPU SP_FPU
+        CONFIG TRUE
+    )
+    mcux_add_source(
+        SOURCES template/ARM_CM55_3_priority_bits/FreeRTOSConfig_Gen.h
+        CORES cm55 cm55f
+        DEVICE_IDS MIMXRTL3450
+        FPU NO_FPU SP_FPU DP_FPU
         CONFIG TRUE
     )
     mcux_add_source(
