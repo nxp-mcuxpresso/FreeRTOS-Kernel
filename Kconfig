@@ -829,6 +829,17 @@ menu "FreeRTOS kernel"
     endif
 
 
+    config MCUX_COMPONENT_middleware.freertos-kernel.cm23_non_trustzone
+        bool "cm23 non trustzone port"
+        default n
+        depends on (MCUX_HW_CORE_CM23)
+
+
+    config MCUX_COMPONENT_middleware.freertos-kernel.cm23_trustzone.non_secure
+        bool "cm23 trustzone, non secure port"
+        default n
+        depends on (MCUX_HW_CORE_CM23)
+
     config MCUX_COMPONENT_middleware.freertos-kernel.cm33_non_trustzone
         bool "cm33 non trustzone port"
         default n
@@ -909,6 +920,11 @@ menu "FreeRTOS kernel"
             No prefix in generated macro
 
     endif
+
+    config MCUX_COMPONENT_middleware.freertos-kernel.cm23_trustzone.secure
+        bool "cm23 trustzone secure port"
+        default n
+        depends on (MCUX_HW_CORE_CM23)
 
     config MCUX_COMPONENT_middleware.freertos-kernel.cm33_trustzone.secure
         bool "cm33 trustzone secure port"
