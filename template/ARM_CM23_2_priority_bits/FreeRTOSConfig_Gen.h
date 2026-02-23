@@ -1,6 +1,6 @@
 /*
- * FreeRTOS Kernel V11.1.0
- * Copyright (C) 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * FreeRTOS Kernel V10.5.1
+ * Copyright (C) 2021 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
  *
@@ -127,7 +127,7 @@
 /* __BVIC_PRIO_BITS will be specified when CMSIS is being used. */
 #define configPRIO_BITS __NVIC_PRIO_BITS
 #else
-#define configPRIO_BITS 3 /* 8 priority levels */
+#define configPRIO_BITS 2
 #endif
 
 /* The lowest interrupt priority that can be used in a call to a "set priority"

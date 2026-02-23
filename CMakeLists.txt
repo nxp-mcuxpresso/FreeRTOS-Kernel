@@ -204,6 +204,132 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel)
     )
 endif ()
 
+if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm23_non_trustzone)
+    mcux_add_include(
+        INCLUDES portable/IAR/ARM_CM23_NTZ/non_secure
+        TOOLCHAINS iar
+        CORES cm23
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+    mcux_add_include(
+        INCLUDES portable/GCC/ARM_CM23_NTZ/non_secure
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm23
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+    mcux_add_source(
+        SOURCES portable/GCC/ARM_CM23_NTZ/non_secure/mpu_wrappers_v2_asm.c
+                portable/GCC/ARM_CM23_NTZ/non_secure/port.c
+                portable/GCC/ARM_CM23_NTZ/non_secure/portasm.c
+                portable/GCC/ARM_CM23_NTZ/non_secure/portasm.h
+                portable/GCC/ARM_CM23_NTZ/non_secure/portmacro.h
+                portable/GCC/ARM_CM23_NTZ/non_secure/portmacrocommon.h
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm23
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+    mcux_add_source(
+        SOURCES portable/IAR/ARM_CM23_NTZ/non_secure/mpu_wrappers_v2_asm.S
+                portable/IAR/ARM_CM23_NTZ/non_secure/port.c
+                portable/IAR/ARM_CM23_NTZ/non_secure/portasm.h
+                portable/IAR/ARM_CM23_NTZ/non_secure/portasm.s
+                portable/IAR/ARM_CM23_NTZ/non_secure/portmacro.h
+                portable/IAR/ARM_CM23_NTZ/non_secure/portmacrocommon.h
+        TOOLCHAINS iar
+        CORES cm23
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+
+endif ()
+
+if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm23_trustzone.non_secure)
+    mcux_add_include(
+        INCLUDES portable/IAR/ARM_CM23/non_secure
+                 portable/IAR/ARM_CM23/secure
+        TOOLCHAINS iar
+        CORES cm23
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+
+    mcux_add_include(
+        INCLUDES portable/GCC/ARM_CM23/non_secure
+                 portable/GCC/ARM_CM23/secure
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm23
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+
+    mcux_add_source(
+        SOURCES portable/GCC/ARM_CM23/non_secure/mpu_wrappers_v2_asm.c
+                portable/GCC/ARM_CM23/non_secure/port.c
+                portable/GCC/ARM_CM23/non_secure/portasm.c
+                portable/GCC/ARM_CM23/non_secure/portasm.h
+                portable/GCC/ARM_CM23/non_secure/portmacro.h
+                portable/GCC/ARM_CM23/non_secure/portmacrocommon.h
+                portable/GCC/ARM_CM23/secure/secure_context.h
+                portable/GCC/ARM_CM23/secure/secure_init.h
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm23
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+    mcux_add_source(
+        SOURCES portable/IAR/ARM_CM23/non_secure/mpu_wrappers_v2_asm.S
+                portable/IAR/ARM_CM23/non_secure/port.c
+                portable/IAR/ARM_CM23/non_secure/portasm.h
+                portable/IAR/ARM_CM23/non_secure/portasm.s
+                portable/IAR/ARM_CM23/non_secure/portmacro.h
+                portable/IAR/ARM_CM23/non_secure/portmacrocommon.h
+                portable/IAR/ARM_CM23/secure/secure_context.h
+                portable/IAR/ARM_CM23/secure/secure_init.h
+        TOOLCHAINS iar
+        CORES cm23
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+endif ()
+
+if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm23_trustzone.secure)
+
+    mcux_add_include(
+        INCLUDES portable/GCC/ARM_CM23/secure
+                 portable/GCC/ARM_CM23/non_secure
+        TOOLCHAINS armgcc mcux mdk
+    )
+
+    mcux_add_source(
+        SOURCES portable/GCC/ARM_CM23/secure/secure_context.c
+                portable/GCC/ARM_CM23/secure/secure_context.h
+                portable/GCC/ARM_CM23/secure/secure_context_port.c
+                portable/GCC/ARM_CM23/secure/secure_heap.c
+                portable/GCC/ARM_CM23/secure/secure_heap.h
+                portable/GCC/ARM_CM23/secure/secure_init.c
+                portable/GCC/ARM_CM23/secure/secure_init.h
+                portable/GCC/ARM_CM23/secure/secure_port_macros.h
+        TOOLCHAINS armgcc mcux mdk
+        CORES cm23
+        FPU NO_FPU SP_FPU DP_FPU
+    )
+
+    mcux_add_include(
+        INCLUDES portable/IAR/ARM_CM23/secure
+                 portable/IAR/ARM_CM23/non_secure
+        TOOLCHAINS iar
+    )
+
+    mcux_add_source(
+        SOURCES portable/IAR/ARM_CM23/secure/secure_context.c
+                portable/IAR/ARM_CM23/secure/secure_context.h
+                portable/IAR/ARM_CM23/secure/secure_context_port_asm.s
+                portable/IAR/ARM_CM23/secure/secure_heap.c
+                portable/IAR/ARM_CM23/secure/secure_heap.h
+                portable/IAR/ARM_CM23/secure/secure_init.c
+                portable/IAR/ARM_CM23/secure/secure_init.h
+                portable/IAR/ARM_CM23/secure/secure_port_macros.h
+        TOOLCHAINS iar
+        CORES cm23
+    )
+
+endif ()
+
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm33_non_trustzone)
     mcux_add_include(
         INCLUDES portable/IAR/ARM_CM33_NTZ/non_secure
@@ -725,6 +851,13 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.config)
     mcux_add_source(
         SOURCES template/ARM_CM0/FreeRTOSConfig_Gen.h
         CORES cm0p
+        CONFIG TRUE
+    )
+    mcux_add_source(
+        SOURCES template/ARM_CM23_2_priority_bits/FreeRTOSConfig_Gen.h
+        CORES cm23
+        DEVICE_IDS MCXC151 MCXC161 MCXC162
+        FPU NO_FPU SP_FPU
         CONFIG TRUE
     )
     mcux_add_source(
