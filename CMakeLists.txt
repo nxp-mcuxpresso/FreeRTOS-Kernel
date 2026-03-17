@@ -4,195 +4,202 @@
 # SPDX-License-Identifier: MIT
 #
 
+if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/../freertos-kernel-upstream/tasks.c")
+  message(FATAL_ERROR
+    "FreeRTOS upstream not found at: ${CMAKE_CURRENT_LIST_DIR}/../freertos-kernel-upstream\n"
+    "Run: west update upstream-freertos-kernel"
+  )
+endif()
+
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel)
     mcux_add_include(
-        INCLUDES include
+        INCLUDES ../freertos-kernel-upstream/include
     )
     mcux_add_include(
         INCLUDES include
     )
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CA9
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CA9
         TOOLCHAINS armgcc mcux
         CORES ca7
     )
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM0
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM0
         COMPILERS armclang gcc
         TOOLCHAINS armgcc mcux mdk
         CORES cm0p
     )
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM3
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM3
         COMPILERS armclang gcc
         TOOLCHAINS armgcc mcux mdk
         CORES cm4 cm3
     )
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM4F
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM4F
         COMPILERS armclang gcc
         TOOLCHAINS armgcc mcux mdk
         CORES cm4f cm7f
     )
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CA9
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CA9
         TOOLCHAINS iar
         CORES ca7
     )
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM0
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM0
         TOOLCHAINS iar
         CORES cm0p
     )
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM3
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM3
         TOOLCHAINS iar
         CORES cm4 cm3
     )
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM4F
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM4F
         TOOLCHAINS iar
         CORES cm4f cm7f
     )
     mcux_add_include(
-        INCLUDES portable/RVDS/ARM_CA9
+        INCLUDES ../freertos-kernel-upstream/portable/RVDS/ARM_CA9
         TOOLCHAINS mdk
         CORES ca7
     )
     mcux_add_include(
-        INCLUDES portable/RVDS/ARM_CM0
+        INCLUDES ../freertos-kernel-upstream/portable/RVDS/ARM_CM0
         COMPILERS armcc
         TOOLCHAINS mdk
         CORES cm0p
     )
     mcux_add_include(
-        INCLUDES portable/RVDS/ARM_CM3
+        INCLUDES ../freertos-kernel-upstream/portable/RVDS/ARM_CM3
         COMPILERS armcc
         TOOLCHAINS mdk
         CORES cm4 cm3
     )
     mcux_add_include(
-        INCLUDES portable/RVDS/ARM_CM4F
+        INCLUDES ../freertos-kernel-upstream/portable/RVDS/ARM_CM4F
         COMPILERS armcc
         TOOLCHAINS mdk
         CORES cm4f cm7f
     )
     mcux_add_source(
-        SOURCES croutine.c
-                event_groups.c
-                list.c
-                queue.c
-                stream_buffer.c
-                tasks.c
-                timers.c
-                include/atomic.h
-                include/croutine.h
-                include/deprecated_definitions.h
-                include/event_groups.h
-                include/FreeRTOS.h
-                include/list.h
-                include/message_buffer.h
-                include/mpu_prototypes.h
-                include/mpu_syscall_numbers.h
-                include/mpu_wrappers.h
-                include/portable.h
-                include/projdefs.h
-                include/queue.h
-                include/semphr.h
-                include/stack_macros.h
-                include/StackMacros.h
-                include/stdint.readme
-                include/stream_buffer.h
-                include/task.h
-                include/timers.h
-                portable/MemMang/ReadMe.url
-                portable/readme.txt
+        SOURCES ../freertos-kernel-upstream/croutine.c
+                ../freertos-kernel-upstream/event_groups.c
+                ../freertos-kernel-upstream/list.c
+                ../freertos-kernel-upstream/queue.c
+                ../freertos-kernel-upstream/stream_buffer.c
+                ../freertos-kernel-upstream/tasks.c
+                ../freertos-kernel-upstream/timers.c
+                ../freertos-kernel-upstream/include/atomic.h
+                ../freertos-kernel-upstream/include/croutine.h
+                ../freertos-kernel-upstream/include/deprecated_definitions.h
+                ../freertos-kernel-upstream/include/event_groups.h
+                ../freertos-kernel-upstream/include/FreeRTOS.h
+                ../freertos-kernel-upstream/include/list.h
+                ../freertos-kernel-upstream/include/message_buffer.h
+                ../freertos-kernel-upstream/include/mpu_prototypes.h
+                ../freertos-kernel-upstream/include/mpu_syscall_numbers.h
+                ../freertos-kernel-upstream/include/mpu_wrappers.h
+                ../freertos-kernel-upstream/include/portable.h
+                ../freertos-kernel-upstream/include/projdefs.h
+                ../freertos-kernel-upstream/include/queue.h
+                ../freertos-kernel-upstream/include/semphr.h
+                ../freertos-kernel-upstream/include/stack_macros.h
+                ../freertos-kernel-upstream/include/StackMacros.h
+                ../freertos-kernel-upstream/include/stdint.readme
+                ../freertos-kernel-upstream/include/stream_buffer.h
+                ../freertos-kernel-upstream/include/task.h
+                ../freertos-kernel-upstream/include/timers.h
+                ../freertos-kernel-upstream/portable/MemMang/ReadMe.url
+                ../freertos-kernel-upstream/portable/readme.txt
     )
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CA9/port.c
-                portable/GCC/ARM_CA9/portASM.S
-                portable/GCC/ARM_CA9/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CA9/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CA9/portASM.S
+                ../freertos-kernel-upstream/portable/GCC/ARM_CA9/portmacro.h
         TOOLCHAINS armgcc mcux
         CORES ca7
     )
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM0/port.c
-                portable/GCC/ARM_CM0/portmacro.h
-                portable/GCC/ARM_CM0/portasm.h
-                portable/GCC/ARM_CM0/portasm.c
-                portable/GCC/ARM_CM0/mpu_wrappers_v2_asm.c
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM0/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM0/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM0/portasm.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM0/portasm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM0/mpu_wrappers_v2_asm.c
         COMPILERS armclang gcc
         TOOLCHAINS armgcc mcux mdk
         CORES cm0p
     )
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM3/port.c
-                portable/GCC/ARM_CM3/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM3/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM3/portmacro.h
         COMPILERS armclang gcc
         TOOLCHAINS armgcc mcux mdk
         CORES cm4 cm3
     )
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM4F/port.c
-                portable/GCC/ARM_CM4F/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM4F/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM4F/portmacro.h
         COMPILERS armclang gcc
         TOOLCHAINS armgcc mcux mdk
         CORES cm4f cm7f
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CA9/port.c
-                portable/IAR/ARM_CA9/portASM.h
-                portable/IAR/ARM_CA9/portASM.s
-                portable/IAR/ARM_CA9/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CA9/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CA9/portASM.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CA9/portASM.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CA9/portmacro.h
         TOOLCHAINS iar
         CORES ca7
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM0/port.c
-                portable/IAR/ARM_CM0/portasm.s
-                portable/IAR/ARM_CM0/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM0/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM0/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM0/portmacro.h
         TOOLCHAINS iar
         CORES cm0p
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM3/port.c
-                portable/IAR/ARM_CM3/portasm.s
-                portable/IAR/ARM_CM3/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM3/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM3/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM3/portmacro.h
         TOOLCHAINS iar
         CORES cm4 cm3
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM4F/port.c
-                portable/IAR/ARM_CM4F/portasm.s
-                portable/IAR/ARM_CM4F/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM4F/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM4F/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM4F/portmacro.h
         TOOLCHAINS iar
         CORES cm4f cm7f
     )
     mcux_add_source(
-        SOURCES portable/RVDS/ARM_CA9/port.c
-                portable/RVDS/ARM_CA9/portASM.s
-                portable/RVDS/ARM_CA9/portmacro.h
-                portable/RVDS/ARM_CA9/portmacro.inc
+        SOURCES ../freertos-kernel-upstream/portable/RVDS/ARM_CA9/port.c
+                ../freertos-kernel-upstream/portable/RVDS/ARM_CA9/portASM.s
+                ../freertos-kernel-upstream/portable/RVDS/ARM_CA9/portmacro.h
+                ../freertos-kernel-upstream/portable/RVDS/ARM_CA9/portmacro.inc
         TOOLCHAINS mdk
         CORES ca7
     )
     mcux_add_source(
-        SOURCES portable/RVDS/ARM_CM0/port.c
-                portable/RVDS/ARM_CM0/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/RVDS/ARM_CM0/port.c
+                ../freertos-kernel-upstream/portable/RVDS/ARM_CM0/portmacro.h
         COMPILERS armcc
         TOOLCHAINS mdk
         CORES cm0p
     )
     mcux_add_source(
-        SOURCES portable/RVDS/ARM_CM3/port.c
-                portable/RVDS/ARM_CM3/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/RVDS/ARM_CM3/port.c
+                ../freertos-kernel-upstream/portable/RVDS/ARM_CM3/portmacro.h
         COMPILERS armcc
         TOOLCHAINS mdk
         CORES cm4 cm3
     )
     mcux_add_source(
-        SOURCES portable/RVDS/ARM_CM4F/port.c
-                portable/RVDS/ARM_CM4F/portmacro.h
+        SOURCES ../freertos-kernel-upstream/portable/RVDS/ARM_CM4F/port.c
+                ../freertos-kernel-upstream/portable/RVDS/ARM_CM4F/portmacro.h
         COMPILERS armcc
         TOOLCHAINS mdk
         CORES cm4f cm7f
@@ -206,35 +213,35 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm23_non_trustzone)
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM23_NTZ/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM23_NTZ/non_secure
         TOOLCHAINS iar
         CORES cm23
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM23_NTZ/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM23_NTZ/non_secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm23
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM23_NTZ/non_secure/mpu_wrappers_v2_asm.c
-                portable/GCC/ARM_CM23_NTZ/non_secure/port.c
-                portable/GCC/ARM_CM23_NTZ/non_secure/portasm.c
-                portable/GCC/ARM_CM23_NTZ/non_secure/portasm.h
-                portable/GCC/ARM_CM23_NTZ/non_secure/portmacro.h
-                portable/GCC/ARM_CM23_NTZ/non_secure/portmacrocommon.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM23_NTZ/non_secure/mpu_wrappers_v2_asm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23_NTZ/non_secure/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23_NTZ/non_secure/portasm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23_NTZ/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23_NTZ/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm23
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM23_NTZ/non_secure/mpu_wrappers_v2_asm.S
-                portable/IAR/ARM_CM23_NTZ/non_secure/port.c
-                portable/IAR/ARM_CM23_NTZ/non_secure/portasm.h
-                portable/IAR/ARM_CM23_NTZ/non_secure/portasm.s
-                portable/IAR/ARM_CM23_NTZ/non_secure/portmacro.h
-                portable/IAR/ARM_CM23_NTZ/non_secure/portmacrocommon.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM23_NTZ/non_secure/mpu_wrappers_v2_asm.S
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23_NTZ/non_secure/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23_NTZ/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23_NTZ/non_secure/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23_NTZ/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS iar
         CORES cm23
         FPU NO_FPU SP_FPU DP_FPU
@@ -244,43 +251,43 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm23_trustzone.non_secure)
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM23/non_secure
-                 portable/IAR/ARM_CM23/secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM23/non_secure
+                 ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure
         TOOLCHAINS iar
         CORES cm23
         FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM23/non_secure
-                 portable/GCC/ARM_CM23/secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM23/non_secure
+                 ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm23
         FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM23/non_secure/mpu_wrappers_v2_asm.c
-                portable/GCC/ARM_CM23/non_secure/port.c
-                portable/GCC/ARM_CM23/non_secure/portasm.c
-                portable/GCC/ARM_CM23/non_secure/portasm.h
-                portable/GCC/ARM_CM23/non_secure/portmacro.h
-                portable/GCC/ARM_CM23/non_secure/portmacrocommon.h
-                portable/GCC/ARM_CM23/secure/secure_context.h
-                portable/GCC/ARM_CM23/secure/secure_init.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM23/non_secure/mpu_wrappers_v2_asm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/non_secure/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/non_secure/portasm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/non_secure/portmacrocommon.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_init.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm23
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM23/non_secure/mpu_wrappers_v2_asm.S
-                portable/IAR/ARM_CM23/non_secure/port.c
-                portable/IAR/ARM_CM23/non_secure/portasm.h
-                portable/IAR/ARM_CM23/non_secure/portasm.s
-                portable/IAR/ARM_CM23/non_secure/portmacro.h
-                portable/IAR/ARM_CM23/non_secure/portmacrocommon.h
-                portable/IAR/ARM_CM23/secure/secure_context.h
-                portable/IAR/ARM_CM23/secure/secure_init.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM23/non_secure/mpu_wrappers_v2_asm.S
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/non_secure/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/non_secure/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/non_secure/portmacrocommon.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_init.h
         TOOLCHAINS iar
         CORES cm23
         FPU NO_FPU SP_FPU DP_FPU
@@ -290,40 +297,40 @@ endif ()
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm23_trustzone.secure)
 
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM23/secure
-                 portable/GCC/ARM_CM23/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure
+                 ../freertos-kernel-upstream/portable/GCC/ARM_CM23/non_secure
         TOOLCHAINS armgcc mcux mdk
     )
 
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM23/secure/secure_context.c
-                portable/GCC/ARM_CM23/secure/secure_context.h
-                portable/GCC/ARM_CM23/secure/secure_context_port.c
-                portable/GCC/ARM_CM23/secure/secure_heap.c
-                portable/GCC/ARM_CM23/secure/secure_heap.h
-                portable/GCC/ARM_CM23/secure/secure_init.c
-                portable/GCC/ARM_CM23/secure/secure_init.h
-                portable/GCC/ARM_CM23/secure/secure_port_macros.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_context.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_context_port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_heap.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_heap.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_init.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_init.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM23/secure/secure_port_macros.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm23
         FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM23/secure
-                 portable/IAR/ARM_CM23/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure
+                 ../freertos-kernel-upstream/portable/IAR/ARM_CM23/non_secure
         TOOLCHAINS iar
     )
 
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM23/secure/secure_context.c
-                portable/IAR/ARM_CM23/secure/secure_context.h
-                portable/IAR/ARM_CM23/secure/secure_context_port_asm.s
-                portable/IAR/ARM_CM23/secure/secure_heap.c
-                portable/IAR/ARM_CM23/secure/secure_heap.h
-                portable/IAR/ARM_CM23/secure/secure_init.c
-                portable/IAR/ARM_CM23/secure/secure_init.h
-                portable/IAR/ARM_CM23/secure/secure_port_macros.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_context.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_context_port_asm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_heap.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_heap.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_init.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_init.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM23/secure/secure_port_macros.h
         TOOLCHAINS iar
         CORES cm23
     )
@@ -332,35 +339,35 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm33_non_trustzone)
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM33_NTZ/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM33_NTZ/non_secure
         TOOLCHAINS iar
         CORES cm33 cm33f
         FPU NO_FPU SP_FPU
     )
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM33_NTZ/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM33_NTZ/non_secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm33 cm33f
         FPU NO_FPU SP_FPU
     )
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM33_NTZ/non_secure/mpu_wrappers_v2_asm.c
-                portable/GCC/ARM_CM33_NTZ/non_secure/port.c
-                portable/GCC/ARM_CM33_NTZ/non_secure/portasm.c
-                portable/GCC/ARM_CM33_NTZ/non_secure/portasm.h
-                portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h
-                portable/GCC/ARM_CM33_NTZ/non_secure/portmacrocommon.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM33_NTZ/non_secure/mpu_wrappers_v2_asm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33_NTZ/non_secure/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33_NTZ/non_secure/portasm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33_NTZ/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33_NTZ/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm33 cm33f
         FPU NO_FPU SP_FPU
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM33_NTZ/non_secure/mpu_wrappers_v2_asm.S
-                portable/IAR/ARM_CM33_NTZ/non_secure/port.c
-                portable/IAR/ARM_CM33_NTZ/non_secure/portasm.h
-                portable/IAR/ARM_CM33_NTZ/non_secure/portasm.s
-                portable/IAR/ARM_CM33_NTZ/non_secure/portmacro.h
-                portable/IAR/ARM_CM33_NTZ/non_secure/portmacrocommon.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM33_NTZ/non_secure/mpu_wrappers_v2_asm.S
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33_NTZ/non_secure/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33_NTZ/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33_NTZ/non_secure/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33_NTZ/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS iar
         CORES cm33 cm33f
         FPU NO_FPU SP_FPU
@@ -370,43 +377,43 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm33_trustzone.non_secure)
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM33/non_secure
-                 portable/IAR/ARM_CM33/secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure
+                 ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure
         TOOLCHAINS iar
         CORES cm33 cm33f
         FPU NO_FPU SP_FPU
     )
 
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM33/non_secure
-                 portable/GCC/ARM_CM33/secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM33/non_secure
+                 ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm33 cm33f
         FPU NO_FPU SP_FPU
     )
 
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM33/non_secure/mpu_wrappers_v2_asm.c
-                portable/GCC/ARM_CM33/non_secure/port.c
-                portable/GCC/ARM_CM33/non_secure/portasm.c
-                portable/GCC/ARM_CM33/non_secure/portasm.h
-                portable/GCC/ARM_CM33/non_secure/portmacro.h
-                portable/GCC/ARM_CM33/non_secure/portmacrocommon.h
-                portable/GCC/ARM_CM33/secure/secure_context.h
-                portable/GCC/ARM_CM33/secure/secure_init.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM33/non_secure/mpu_wrappers_v2_asm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/non_secure/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/non_secure/portasm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/non_secure/portmacrocommon.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_init.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm33 cm33f
         FPU NO_FPU SP_FPU
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM33/non_secure/mpu_wrappers_v2_asm.S
-                portable/IAR/ARM_CM33/non_secure/port.c
-                portable/IAR/ARM_CM33/non_secure/portasm.h
-                portable/IAR/ARM_CM33/non_secure/portasm.s
-                portable/IAR/ARM_CM33/non_secure/portmacro.h
-                portable/IAR/ARM_CM33/non_secure/portmacrocommon.h
-                portable/IAR/ARM_CM33/secure/secure_context.h
-                portable/IAR/ARM_CM33/secure/secure_init.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/mpu_wrappers_v2_asm.S
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/portmacrocommon.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_init.h
         TOOLCHAINS iar
         CORES cm33 cm33f
         FPU NO_FPU SP_FPU
@@ -416,40 +423,40 @@ endif ()
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm33_trustzone.secure)
 
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM33/secure
-                 portable/GCC/ARM_CM33/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure
+                 ../freertos-kernel-upstream/portable/GCC/ARM_CM33/non_secure
         TOOLCHAINS armgcc mcux mdk
     )
 
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM33/secure/secure_context.c
-                portable/GCC/ARM_CM33/secure/secure_context.h
-                portable/GCC/ARM_CM33/secure/secure_context_port.c
-                portable/GCC/ARM_CM33/secure/secure_heap.c
-                portable/GCC/ARM_CM33/secure/secure_heap.h
-                portable/GCC/ARM_CM33/secure/secure_init.c
-                portable/GCC/ARM_CM33/secure/secure_init.h
-                portable/GCC/ARM_CM33/secure/secure_port_macros.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_context.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_context_port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_heap.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_heap.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_init.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_init.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM33/secure/secure_port_macros.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm33 cm33f
         FPU NO_FPU SP_FPU
     )
 
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM33/secure
-                 portable/IAR/ARM_CM33/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure
+                 ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure
         TOOLCHAINS iar
     )
 
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM33/secure/secure_context.c
-                portable/IAR/ARM_CM33/secure/secure_context.h
-                portable/IAR/ARM_CM33/secure/secure_context_port_asm.s
-                portable/IAR/ARM_CM33/secure/secure_heap.c
-                portable/IAR/ARM_CM33/secure/secure_heap.h
-                portable/IAR/ARM_CM33/secure/secure_init.c
-                portable/IAR/ARM_CM33/secure/secure_init.h
-                portable/IAR/ARM_CM33/secure/secure_port_macros.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_context.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_context_port_asm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_heap.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_heap.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_init.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_init.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_port_macros.h
         TOOLCHAINS iar
         CORES cm33 cm33f
     )
@@ -458,35 +465,35 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm55_non_trustzone)
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM55_NTZ/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM55_NTZ/non_secure
         TOOLCHAINS iar
         CORES cm55 cm55f
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM55_NTZ/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM55_NTZ/non_secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm55 cm55f
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM55_NTZ/non_secure/mpu_wrappers_v2_asm.c
-                portable/GCC/ARM_CM55_NTZ/non_secure/port.c
-                portable/GCC/ARM_CM55_NTZ/non_secure/portasm.c
-                portable/GCC/ARM_CM55_NTZ/non_secure/portasm.h
-                portable/GCC/ARM_CM55_NTZ/non_secure/portmacro.h
-                portable/GCC/ARM_CM55_NTZ/non_secure/portmacrocommon.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM55_NTZ/non_secure/mpu_wrappers_v2_asm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55_NTZ/non_secure/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55_NTZ/non_secure/portasm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55_NTZ/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55_NTZ/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm55 cm55f
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM55_NTZ/non_secure/mpu_wrappers_v2_asm.S
-                portable/IAR/ARM_CM55_NTZ/non_secure/port.c
-                portable/IAR/ARM_CM55_NTZ/non_secure/portasm.h
-                portable/IAR/ARM_CM55_NTZ/non_secure/portasm.s
-                portable/IAR/ARM_CM55_NTZ/non_secure/portmacro.h
-                portable/IAR/ARM_CM55_NTZ/non_secure/portmacrocommon.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM55_NTZ/non_secure/mpu_wrappers_v2_asm.S
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55_NTZ/non_secure/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55_NTZ/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55_NTZ/non_secure/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55_NTZ/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS iar
         CORES cm55 cm55f
         FPU NO_FPU SP_FPU DP_FPU
@@ -496,43 +503,43 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm55_trustzone.non_secure)
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM55/non_secure
-                 portable/IAR/ARM_CM55/secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure
+                 ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure
         TOOLCHAINS iar
         CORES cm55 cm55f
         FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM55/non_secure
-                 portable/GCC/ARM_CM55/secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM55/non_secure
+                 ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm55 cm55f
         FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM55/non_secure/mpu_wrappers_v2_asm.c
-                portable/GCC/ARM_CM55/non_secure/port.c
-                portable/GCC/ARM_CM55/non_secure/portasm.c
-                portable/GCC/ARM_CM55/non_secure/portasm.h
-                portable/GCC/ARM_CM55/non_secure/portmacro.h
-                portable/GCC/ARM_CM55/non_secure/portmacrocommon.h
-                portable/GCC/ARM_CM55/secure/secure_context.h
-                portable/GCC/ARM_CM55/secure/secure_init.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM55/non_secure/mpu_wrappers_v2_asm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/non_secure/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/non_secure/portasm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/non_secure/portmacrocommon.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_init.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm55 cm55f
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM55/non_secure/mpu_wrappers_v2_asm.S
-                portable/IAR/ARM_CM55/non_secure/port.c
-                portable/IAR/ARM_CM55/non_secure/portasm.h
-                portable/IAR/ARM_CM55/non_secure/portasm.s
-                portable/IAR/ARM_CM55/non_secure/portmacro.h
-                portable/IAR/ARM_CM55/non_secure/portmacrocommon.h
-                portable/IAR/ARM_CM55/secure/secure_context.h
-                portable/IAR/ARM_CM55/secure/secure_init.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/mpu_wrappers_v2_asm.S
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/portmacrocommon.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_init.h
         TOOLCHAINS iar
         CORES cm55 cm55f
         FPU NO_FPU SP_FPU DP_FPU
@@ -542,40 +549,40 @@ endif ()
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm55_trustzone.secure)
 
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM55/secure
-                 portable/GCC/ARM_CM55/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure
+                 ../freertos-kernel-upstream/portable/GCC/ARM_CM55/non_secure
         TOOLCHAINS armgcc mcux mdk
     )
 
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM55/secure/secure_context.c
-                portable/GCC/ARM_CM55/secure/secure_context.h
-                portable/GCC/ARM_CM55/secure/secure_context_port.c
-                portable/GCC/ARM_CM55/secure/secure_heap.c
-                portable/GCC/ARM_CM55/secure/secure_heap.h
-                portable/GCC/ARM_CM55/secure/secure_init.c
-                portable/GCC/ARM_CM55/secure/secure_init.h
-                portable/GCC/ARM_CM55/secure/secure_port_macros.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_context.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_context_port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_heap.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_heap.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_init.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_init.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM55/secure/secure_port_macros.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm55 cm55f
         FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM55/secure
-                 portable/IAR/ARM_CM55/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure
+                 ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure
         TOOLCHAINS iar
     )
 
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM55/secure/secure_context.c
-                portable/IAR/ARM_CM55/secure/secure_context.h
-                portable/IAR/ARM_CM55/secure/secure_context_port_asm.s
-                portable/IAR/ARM_CM55/secure/secure_heap.c
-                portable/IAR/ARM_CM55/secure/secure_heap.h
-                portable/IAR/ARM_CM55/secure/secure_init.c
-                portable/IAR/ARM_CM55/secure/secure_init.h
-                portable/IAR/ARM_CM55/secure/secure_port_macros.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_context.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_context_port_asm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_heap.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_heap.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_init.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_init.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_port_macros.h
         TOOLCHAINS iar
         CORES cm55 cm55f
     )
@@ -584,35 +591,35 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_non_trustzone)
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM85_NTZ/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM85_NTZ/non_secure
         TOOLCHAINS iar
         CORES cm85 cm85f
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM85_NTZ/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM85_NTZ/non_secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM85_NTZ/non_secure/mpu_wrappers_v2_asm.c
-                portable/GCC/ARM_CM85_NTZ/non_secure/port.c
-                portable/GCC/ARM_CM85_NTZ/non_secure/portasm.c
-                portable/GCC/ARM_CM85_NTZ/non_secure/portasm.h
-                portable/GCC/ARM_CM85_NTZ/non_secure/portmacro.h
-                portable/GCC/ARM_CM85_NTZ/non_secure/portmacrocommon.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM85_NTZ/non_secure/mpu_wrappers_v2_asm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85_NTZ/non_secure/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85_NTZ/non_secure/portasm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85_NTZ/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85_NTZ/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM85_NTZ/non_secure/mpu_wrappers_v2_asm.S
-                portable/IAR/ARM_CM85_NTZ/non_secure/port.c
-                portable/IAR/ARM_CM85_NTZ/non_secure/portasm.h
-                portable/IAR/ARM_CM85_NTZ/non_secure/portasm.s
-                portable/IAR/ARM_CM85_NTZ/non_secure/portmacro.h
-                portable/IAR/ARM_CM85_NTZ/non_secure/portmacrocommon.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM85_NTZ/non_secure/mpu_wrappers_v2_asm.S
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85_NTZ/non_secure/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85_NTZ/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85_NTZ/non_secure/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85_NTZ/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85_NTZ/non_secure/portmacrocommon.h
         TOOLCHAINS iar
         CORES cm85 cm85f
         FPU NO_FPU SP_FPU DP_FPU
@@ -622,43 +629,43 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_trustzone.non_secure)
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM85/non_secure
-                 portable/IAR/ARM_CM85/secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure
+                 ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure
         TOOLCHAINS iar
         CORES cm85 cm85f
         FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM85/non_secure
-                 portable/GCC/ARM_CM85/secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM85/non_secure
+                 ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
         FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM85/non_secure/mpu_wrappers_v2_asm.c
-                portable/GCC/ARM_CM85/non_secure/port.c
-                portable/GCC/ARM_CM85/non_secure/portasm.c
-                portable/GCC/ARM_CM85/non_secure/portasm.h
-                portable/GCC/ARM_CM85/non_secure/portmacro.h
-                portable/GCC/ARM_CM85/non_secure/portmacrocommon.h
-                portable/GCC/ARM_CM85/secure/secure_context.h
-                portable/GCC/ARM_CM85/secure/secure_init.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM85/non_secure/mpu_wrappers_v2_asm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/non_secure/port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/non_secure/portasm.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/non_secure/portmacrocommon.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_init.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
         FPU NO_FPU SP_FPU DP_FPU
     )
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM85/non_secure/mpu_wrappers_v2_asm.S
-                portable/IAR/ARM_CM85/non_secure/port.c
-                portable/IAR/ARM_CM85/non_secure/portasm.h
-                portable/IAR/ARM_CM85/non_secure/portasm.s
-                portable/IAR/ARM_CM85/non_secure/portmacro.h
-                portable/IAR/ARM_CM85/non_secure/portmacrocommon.h
-                portable/IAR/ARM_CM85/secure/secure_context.h
-                portable/IAR/ARM_CM85/secure/secure_init.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/mpu_wrappers_v2_asm.S
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/port.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/portasm.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/portasm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/portmacro.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/portmacrocommon.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_init.h
         TOOLCHAINS iar
         CORES cm85 cm85f
         FPU NO_FPU SP_FPU DP_FPU
@@ -668,40 +675,40 @@ endif ()
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_trustzone.secure)
 
     mcux_add_include(
-        INCLUDES portable/GCC/ARM_CM85/secure
-                 portable/GCC/ARM_CM85/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure
+                 ../freertos-kernel-upstream/portable/GCC/ARM_CM85/non_secure
         TOOLCHAINS armgcc mcux mdk
     )
 
     mcux_add_source(
-        SOURCES portable/GCC/ARM_CM85/secure/secure_context.c
-                portable/GCC/ARM_CM85/secure/secure_context.h
-                portable/GCC/ARM_CM85/secure/secure_context_port.c
-                portable/GCC/ARM_CM85/secure/secure_heap.c
-                portable/GCC/ARM_CM85/secure/secure_heap.h
-                portable/GCC/ARM_CM85/secure/secure_init.c
-                portable/GCC/ARM_CM85/secure/secure_init.h
-                portable/GCC/ARM_CM85/secure/secure_port_macros.h
+        SOURCES ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_context.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_context_port.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_heap.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_heap.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_init.c
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_init.h
+                ../freertos-kernel-upstream/portable/GCC/ARM_CM85/secure/secure_port_macros.h
         TOOLCHAINS armgcc mcux mdk
         CORES cm85 cm85f
         FPU NO_FPU SP_FPU DP_FPU
     )
 
     mcux_add_include(
-        INCLUDES portable/IAR/ARM_CM85/secure
-                 portable/IAR/ARM_CM85/non_secure
+        INCLUDES ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure
+                 ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure
         TOOLCHAINS iar
     )
 
     mcux_add_source(
-        SOURCES portable/IAR/ARM_CM85/secure/secure_context.c
-                portable/IAR/ARM_CM85/secure/secure_context.h
-                portable/IAR/ARM_CM85/secure/secure_context_port_asm.s
-                portable/IAR/ARM_CM85/secure/secure_heap.c
-                portable/IAR/ARM_CM85/secure/secure_heap.h
-                portable/IAR/ARM_CM85/secure/secure_init.c
-                portable/IAR/ARM_CM85/secure/secure_init.h
-                portable/IAR/ARM_CM85/secure/secure_port_macros.h
+        SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_context.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_context.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_context_port_asm.s
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_heap.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_heap.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_init.c
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_init.h
+                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_port_macros.h
         TOOLCHAINS iar
         CORES cm85 cm85f
     )
@@ -710,7 +717,7 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.tfm_ns)
     mcux_add_source(
-        SOURCES portable/ThirdParty/GCC/ARM_TFM/os_wrapper_freertos.c
+        SOURCES ../freertos-kernel-upstream/portable/ThirdParty/GCC/ARM_TFM/os_wrapper_freertos.c
     )
 endif ()
 
@@ -725,61 +732,61 @@ endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.use_newlib_reentrant)
     mcux_add_include(
-        INCLUDES include
+        INCLUDES ../freertos-kernel-upstream/include
     )
     mcux_add_source(
-        SOURCES include/newlib-freertos.h
+        SOURCES ../freertos-kernel-upstream/include/newlib-freertos.h
     )
 endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.use_picolibc_tls)
     mcux_add_include(
-        INCLUDES include
+        INCLUDES ../freertos-kernel-upstream/include
     )
     mcux_add_source(
-        SOURCES include/picolibc-freertos.h
+        SOURCES ../freertos-kernel-upstream/include/picolibc-freertos.h
     )
 endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.heap_1)
     mcux_add_source(
-        SOURCES portable/MemMang/heap_1.c
+        SOURCES ../freertos-kernel-upstream/portable/MemMang/heap_1.c
     )
 endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.heap_2)
     mcux_add_source(
-        SOURCES portable/MemMang/heap_2.c
+        SOURCES ../freertos-kernel-upstream/portable/MemMang/heap_2.c
     )
 endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.heap_3)
     mcux_add_source(
-        SOURCES portable/MemMang/heap_3.c
+        SOURCES ../freertos-kernel-upstream/portable/MemMang/heap_3.c
     )
 endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.heap_4)
     mcux_add_source(
-        SOURCES portable/MemMang/heap_4.c
+        SOURCES ../freertos-kernel-upstream/portable/MemMang/heap_4.c
     )
 endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.heap_5)
     mcux_add_source(
-        SOURCES portable/MemMang/heap_5.c
+        SOURCES ../freertos-kernel-upstream/portable/MemMang/heap_5.c
     )
 endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.mpu_wrappers_v2)
     mcux_add_source(
-        SOURCES portable/Common/mpu_wrappers_v2.c
+        SOURCES ../freertos-kernel-upstream/portable/Common/mpu_wrappers_v2.c
     )
 endif ()
 
 if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.mpu_wrappers)
     mcux_add_source(
-        SOURCES portable/Common/mpu_wrappers.c
+        SOURCES ../freertos-kernel-upstream/portable/Common/mpu_wrappers.c
     )
 endif ()
 
