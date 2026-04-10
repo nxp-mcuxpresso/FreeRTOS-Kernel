@@ -2,22 +2,22 @@
   "SPDXID": "SPDXRef-DOCUMENT",
   "spdxVersion": "SPDX-2.3",
   "creationInfo": {
-    "created": "2026-01-08T03:53:58Z",
+    "created": "2026-04-16T08:21:32Z",
     "creators": [
       "Organization: NXP"
     ],
     "licenseListVersion": "3.26"
   },
-  "name": "freertos-kernel-v26.03.00-pvw1",
+  "name": "freertos-kernel-v26.06.00",
   "dataLicense": "CC0-1.0",
-  "documentNamespace": "https://nxp.com/spdx/4d54e6fe-62d4-4dd4-9721-22b0f0875b07",
+  "documentNamespace": "https://nxp.com/spdx/c65655ed-91a2-4cf9-add8-c9202218d134",
   "packages": [
     {
-      "SPDXID": "SPDXRef-package-4d54e6fe-62d4-4dd4-9721-22b0f0875b07",
+      "SPDXID": "SPDXRef-package-c65655ed-91a2-4cf9-add8-c9202218d134",
       "name": "freertos-kernel",
-      "versionInfo": "v26.03.00-pvw1",
-      "licenseConcluded": "(MIT)",
-      "licenseDeclared": "(MIT)",
+      "versionInfo": "v26.06.00",
+      "licenseConcluded": "(BSD-3-Clause)",
+      "licenseDeclared": "(BSD-3-Clause)",
       "downloadLocation": "https://github.com/nxp-mcuxpresso/freertos-kernel",
       "originator": "Organization: NXP",
       "supplier": "NOASSERTION",
@@ -25,13 +25,13 @@
       "filesAnalyzed": false
     },
     {
-      "SPDXID": "SPDXRef-package-b7b4d7f2-95ac-4480-93c9-ceeee76828c8",
+      "SPDXID": "SPDXRef-package-c65655ed-91a2-4cf9-add8-c9202218d134---b7b4d7f2-95ac-4480-93c9-ceeee76828c8",
       "name": "FreeRTOS Real Time Kernel",
       "versionInfo": "V11.2.0",
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
       "homepage": "https://sourceforge.net/projects/freertos",
-      "downloadLocation": "https://github.com/FreeRTOS/FreeRTOS-Kernel/releases/tag/V11.2.0",
+      "downloadLocation": "NOASSERTION",
       "originator": "Organization: freertos",
       "supplier": "NOASSERTION",
       "externalRefs": [
@@ -57,7 +57,7 @@
         },
         {
           "referenceCategory": "PACKAGE-MANAGER",
-          "referenceLocator": "pkg:github/FreeRTOS/FreeRTOS-Kernel@V11.2.0",
+          "referenceLocator": "pkg:github/freertos/freertos-kernel@V11.2.0",
           "referenceType": "purl"
         }
       ],
@@ -68,12 +68,12 @@
     {
       "spdxElementId": "SPDXRef-DOCUMENT",
       "relationshipType": "DESCRIBES",
-      "relatedSpdxElement": "SPDXRef-package-4d54e6fe-62d4-4dd4-9721-22b0f0875b07"
+      "relatedSpdxElement": "SPDXRef-package-c65655ed-91a2-4cf9-add8-c9202218d134"
     },
     {
-      "spdxElementId": "SPDXRef-package-4d54e6fe-62d4-4dd4-9721-22b0f0875b07",
+      "spdxElementId": "SPDXRef-package-c65655ed-91a2-4cf9-add8-c9202218d134",
       "relationshipType": "CONTAINS",
-      "relatedSpdxElement": "SPDXRef-package-b7b4d7f2-95ac-4480-93c9-ceeee76828c8"
+      "relatedSpdxElement": "SPDXRef-package-c65655ed-91a2-4cf9-add8-c9202218d134---b7b4d7f2-95ac-4480-93c9-ceeee76828c8"
     }
   ]
 }
