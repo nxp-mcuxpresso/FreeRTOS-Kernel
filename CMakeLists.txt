@@ -7,7 +7,7 @@
 if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/../freertos-kernel-upstream/tasks.c")
   message(FATAL_ERROR
     "FreeRTOS upstream not found at: ${CMAKE_CURRENT_LIST_DIR}/../freertos-kernel-upstream\n"
-    "Run: west update upstream-freertos-kernel"
+    "Run: west update freertos-kernel-upstream"
   )
 endif()
 
