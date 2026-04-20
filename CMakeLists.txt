@@ -790,10 +790,9 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.mpu_wrappers)
     )
 endif ()
 
+# Generate FreeRTOS configuration headers for both full kernel users and
+# secure TrustZone support-only users that need FreeRTOSConfig.h.
 if (CONFIG_MCUX_PRJSEG_middleware.freertos-kernel.generated_config)
-endif ()
-
-if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.config)
     mcux_add_include(
         INCLUDES template
         TARGET_FILES FreeRTOSConfig.h

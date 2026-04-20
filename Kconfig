@@ -8,7 +8,6 @@ menu "FreeRTOS kernel"
 
     config MCUX_COMPONENT_middleware.freertos-kernel
         bool "FreeRTOS kernel"
-        imply MCUX_COMPONENT_middleware.freertos-kernel.config
 
     choice MCUX_MISC_middleware.freertos-kernel.dynamic_allocator.selection
         prompt "Dynamic Allocator"
@@ -51,9 +50,20 @@ menu "FreeRTOS kernel"
                 A custom heap implementation must be provided externally.
     endchoice
 
+    config MCUX_PRJSEG_middleware.freertos-kernel.generated_config
+        bool "Generate FreeRTOS configuration header"
+        default y if MCUX_COMPONENT_middleware.freertos-kernel
+        default y if MCUX_COMPONENT_middleware.freertos-kernel.cm23_trustzone.secure
+        default y if MCUX_COMPONENT_middleware.freertos-kernel.cm33_trustzone.secure
+        default y if MCUX_COMPONENT_middleware.freertos-kernel.cm55_trustzone.secure
+        default y if MCUX_COMPONENT_middleware.freertos-kernel.cm85_trustzone.secure
+        help
+            Generate the FreeRTOSConfig.h/FreeRTOSConfig_Gen.h headers. Leave this
+            disabled only when the application provides its own FreeRTOSConfig.h.
+
     config FREERTOS_USE_CUSTOM_CONFIG_FRAGMENT
         bool "Include application specific FreeRTOS Configuration Header Fragment"
-        depends on MCUX_COMPONENT_middleware.freertos-kernel
+        depends on MCUX_PRJSEG_middleware.freertos-kernel.generated_config
         default n
         help
             This option allows Application to include custom FreeRTOSConfig_frag.h fragment file.
@@ -61,15 +71,6 @@ menu "FreeRTOS kernel"
             In this file App can define its own code related to FreeRTOS Configuration.
             This custom configuration is included into base FreeRTOSConfig.h file
             after FreeRTOSConfig_Gen.h include.
-
-    if MCUX_COMPONENT_middleware.freertos-kernel
-        config MCUX_PRJSEG_middleware.freertos-kernel.generated_config
-            bool "Generate FreeRTOS configuration header"
-            depends on MCUX_COMPONENT_middleware.freertos-kernel
-            default y
-            help
-                Generate the FreeRTOSConfig.h, otherwise users need to provide their
-                own FreeRTOSConfig.h.
 
     if MCUX_PRJSEG_middleware.freertos-kernel.generated_config
 
@@ -828,6 +829,8 @@ menu "FreeRTOS kernel"
 
     endif
 
+
+    if MCUX_COMPONENT_middleware.freertos-kernel
 
     config MCUX_COMPONENT_middleware.freertos-kernel.cm23_non_trustzone
         bool "cm23 non trustzone port"
