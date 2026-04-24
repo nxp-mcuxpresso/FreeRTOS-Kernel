@@ -61,6 +61,10 @@ menu "FreeRTOS kernel"
             Generate the FreeRTOSConfig.h/FreeRTOSConfig_Gen.h headers. Leave this
             disabled only when the application provides its own FreeRTOSConfig.h.
 
+    config MCUX_COMPONENT_middleware.freertos-kernel.config
+        bool "configuration template"
+        default y if MCUX_PRJSEG_middleware.freertos-kernel.generated_config
+
     config FREERTOS_USE_CUSTOM_CONFIG_FRAGMENT
         bool "Include application specific FreeRTOS Configuration Header Fragment"
         depends on MCUX_PRJSEG_middleware.freertos-kernel.generated_config
@@ -912,9 +916,6 @@ menu "FreeRTOS kernel"
                         bool "v2"
                 endchoice
             endif
-
-    config MCUX_COMPONENT_middleware.freertos-kernel.config
-        bool "configuration template"
 
     config USE_PERCEPIO_TRACELYZER
         bool "Use Percepio Tracelyzer"
