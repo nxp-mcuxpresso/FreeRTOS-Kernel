@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2019, 2024, 2025 NXP
+ * Copyright 2017-2019, 2024, 2025, 2026 NXP
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -67,7 +67,10 @@ extern const uint8_t FreeRTOSDebugConfig[];
 #if (tskKERNEL_VERSION_MAJOR >= 11) || ((tskKERNEL_VERSION_MAJOR >= 10) && (tskKERNEL_VERSION_MINOR >= 2))
 extern const char *const portArch_Name;
 #if defined(__GNUC__)
+#pragma GCC push_options
+#pragma GCC optimize("O0")
 const char *const portArch_Name __attribute__((section(".rodata"))) = portARCH_NAME;
+#pragma GCC pop_options
 #elif defined(__CC_ARM) || defined(__ARMCC_VERSION)
 const char *const portArch_Name __attribute__((used)) = portARCH_NAME;
 #elif defined(__IAR_SYSTEMS_ICC__)
@@ -79,6 +82,8 @@ const char *const portArch_Name = NULL;
 #endif	// tskKERNEL_VERSION_MAJOR
 
 #if defined(__GNUC__)
+#pragma GCC push_options
+#pragma GCC optimize("O0")
 const uint8_t FreeRTOSDebugConfig[] __attribute__((section(".rodata"))) =
 #elif defined(__CC_ARM) || defined(__ARMCC_VERSION)
 const uint8_t FreeRTOSDebugConfig[] __attribute__((used)) =
@@ -119,6 +124,9 @@ const uint8_t FreeRTOSDebugConfig[] =
     0, 0, 0, 0, // Padding
 #endif // configNUMBER_OF_CORES > 1
 };
+#if defined(__GNUC__)
+#pragma GCC pop_options
+#endif
 
 #ifdef __cplusplus
 }
