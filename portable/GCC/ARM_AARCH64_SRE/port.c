@@ -393,7 +393,50 @@ void FreeRTOS_Tick_Handler( void )
         uint64_t ullRunningInterruptPriority;
         /* s3_0_c12_c11_3 is ICC_RPR_EL1. */
         __asm volatile ( "MRS %0, s3_0_c12_c11_3" : "=r" ( ullRunningInterruptPriority ) );
-        configASSERT( ullRunningInterruptPriority == ( portLOWEST_USABLE_INTERRUPT_PRIORITY << portPRIORITY_SHIFT ) );
+        /*
+         * How priority values are used by the GIC depends on two things:
+         * the security state of the GIC (controlled by the GICD_CTLR.DS bit)
+         * and if Group 0 interrupts can be delivered to the OS in the non-secure
+         * world as FIQs (controlled by the SCR_EL3.FIQ bit). These affect the
+         * way priorities are presented in ICC_RPR_EL1 and in the distributor:
+         *
+         * GICD_CTLR.DS | SCR_EL3.FIQ | ICC_RPR_EL1 | Distributor
+         * -------------------------------------------------------
+         *      1       |      -      |  unchanged  |  unchanged
+         * -------------------------------------------------------
+         *      0       |      1      |  non-secure |  non-secure
+         * -------------------------------------------------------
+         *      0       |      0      |  unchanged  |  non-secure
+         *
+         * In the non-secure view reads and writes are modified:
+         *
+         * - A value written is right-shifted by one and the MSB is set,
+         *   forcing the priority into the non-secure range.
+         *
+         * - A value read is left-shifted by one.
+         *
+         * In the first two cases, where ICC_RPR_EL1 and the Distributor
+         * interrupt priority register are both either modified or unchanged,
+         * they are using the same set of priorities, so no mismatch here.
+         *
+         * In the last case, the interrupt priorities programmed in the
+         * Distributor are forced into the non-secure range, while the CPU
+         * interface (ICC_RPR_EL1) is still observed unchanged. This
+         * creates a mismatch between the programmed priority values and
+         * the value read back from ICC_RPR_EL1.
+         *
+         * Workaround for the last case: GICD_CTLR.DS = 0 && SCR_EL3.FIQ = 0
+         * The reading back priority value from ICC_RPR_EL1 is unchanged,
+         * convert it back to non-secure view to compare with the programmed
+         * interrupt priority of the tick interrupt handler.
+         *
+         * see GICv3/GICv4 Architecture Specification (IHI0069D):
+         * - section 4.8.1 Non-secure accesses to register fields for Secure
+         *   interrupt priorities.
+         * - section 4.8.6 Software accesses of interrupt priority
+         */
+        configASSERT(( ullRunningInterruptPriority == ( portLOWEST_USABLE_INTERRUPT_PRIORITY << portPRIORITY_SHIFT ) ) ||
+                     ( ((ullRunningInterruptPriority << 1) & 0xff) == ( portLOWEST_USABLE_INTERRUPT_PRIORITY << portPRIORITY_SHIFT ) ));
     }
     #endif
 
