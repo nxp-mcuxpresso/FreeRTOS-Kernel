@@ -13,7 +13,7 @@ MCUXpresso SDK provides a comprehensive development solutions designed to optimi
 - cmake and Kconfig support to allow the configuration and build in MCUXpresso SDK ecosystem
 - FreeRTOS OS additions, such as [FreeRTOS driver wrappers](https://github.com/nxp-mcuxpresso/mcux-freertos-drivers), RTOS ready FatFs file system, and the implementation of FreeRTOS tickless mode
 
-The history of changes in FreeRTOS kernel repo for MCUXpresso SDK are summarized in [CHANGELOG_mcuxsdk.md](CHANGELOG_mcuxsdk.md) file.
+The history of changes in FreeRTOS kernel repo for MCUXpresso SDK are summarized in [CHANGELOG.md](CHANGELOG.md) file.
 
 The MCUXpresso SDK framework also contains a set of FreeRTOS examples which show basic FreeRTOS OS features. This makes it easy to start a new FreeRTOS project or begin experimenting with FreeRTOS OS. Selected drivers and middleware are RTOS ready with related FreeRTOS adaptation layer.
  
