@@ -423,7 +423,9 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm33_trustzone.non_secure)
         SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/mpu_wrappers_v2_asm.S
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/port.c
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/portasm.h
-                ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/portasm.s
+                # TEMP: override for FreeRTOS-Kernel upstream bug #1480 (stray URL on line 466);
+                # revert to ../freertos-kernel-upstream/... once upstream fix is merged.
+                portable/IAR/ARM_CM33/non_secure/portasm.s
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/portmacro.h
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM33/non_secure/portmacrocommon.h
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM33/secure/secure_context.h
@@ -549,7 +551,9 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm55_trustzone.non_secure)
         SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/mpu_wrappers_v2_asm.S
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/port.c
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/portasm.h
-                ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/portasm.s
+                # TEMP: override for FreeRTOS-Kernel upstream bug #1480 (stray URL on line 466);
+                # revert to ../freertos-kernel-upstream/... once upstream fix is merged.
+                portable/IAR/ARM_CM55/non_secure/portasm.s
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/portmacro.h
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM55/non_secure/portmacrocommon.h
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM55/secure/secure_context.h
@@ -675,7 +679,9 @@ if (CONFIG_MCUX_COMPONENT_middleware.freertos-kernel.cm85_trustzone.non_secure)
         SOURCES ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/mpu_wrappers_v2_asm.S
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/port.c
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/portasm.h
-                ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/portasm.s
+                # TEMP: override for FreeRTOS-Kernel upstream bug #1480 (stray URL on line 466);
+                # revert to ../freertos-kernel-upstream/... once upstream fix is merged.
+                portable/IAR/ARM_CM85/non_secure/portasm.s
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/portmacro.h
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM85/non_secure/portmacrocommon.h
                 ../freertos-kernel-upstream/portable/IAR/ARM_CM85/secure/secure_context.h

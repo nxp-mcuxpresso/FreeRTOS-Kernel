@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Temporary workaround for FreeRTOS-Kernel upstream bug #1480: stray URL
+  (`http://files.iar.com/ftp/pub/box/bxarm-9.60.3.deb`) accidentally placed
+  outside `/* */` comment delimiters on line 466 of the IAR CM33/CM55/CM85
+  TrustZone non-secure `portasm.s` files (introduced in upstream commit
+  `78e0cc778a`, PR #1195). Fixed copies are placed under
+  `portable/IAR/ARM_CM{33,55,85}/non_secure/portasm.s` and the
+  CMakeLists.txt SOURCES entries for the `cm33/cm55/cm85_trustzone.non_secure`
+  IAR toolchain blocks are redirected to those copies. Revert the three
+  CMakeLists.txt lines once the upstream fix
+  is merged and the `freertos-kernel-upstream` revision is bumped past it,
+  then delete `portable/IAR/ARM_CM{33,55,85}/` from this repo.
+
 ### Added
 
 ## [11.2.0_rev0]
