@@ -27,7 +27,7 @@
     {
       "SPDXID": "SPDXRef-package-c65655ed-91a2-4cf9-add8-c9202218d134---b7b4d7f2-95ac-4480-93c9-ceeee76828c8",
       "name": "FreeRTOS Real Time Kernel",
-      "versionInfo": "V11.2.0",
+      "versionInfo": "V11.3.1",
       "licenseConcluded": "MIT",
       "licenseDeclared": "MIT",
       "homepage": "https://sourceforge.net/projects/freertos",
@@ -42,22 +42,22 @@
         },
         {
           "referenceCategory": "SECURITY",
-          "referenceLocator": "cpe:2.3:a:amazon:aws-freertos-kernel:11.2.0:*:*:*:*:*:*:*",
+          "referenceLocator": "cpe:2.3:a:amazon:aws-freertos-kernel:11.3.1:*:*:*:*:*:*:*",
           "referenceType": "cpe23Type"
         },
         {
           "referenceCategory": "SECURITY",
-          "referenceLocator": "cpe:2.3:a:amazon:freertos:11.2.0:*:*:*:*:*:*:*",
+          "referenceLocator": "cpe:2.3:a:amazon:freertos:11.3.1:*:*:*:*:*:*:*",
           "referenceType": "cpe23Type"
         },
         {
           "referenceCategory": "SECURITY",
-          "referenceLocator": "cpe:2.3:o:amazon:freertos:11.2.0:*:*:*:*:*:*:*",
+          "referenceLocator": "cpe:2.3:o:amazon:freertos:11.3.1:*:*:*:*:*:*:*",
           "referenceType": "cpe23Type"
         },
         {
           "referenceCategory": "PACKAGE-MANAGER",
-          "referenceLocator": "pkg:github/freertos/freertos-kernel@V11.2.0",
+          "referenceLocator": "pkg:github/freertos/freertos-kernel@V11.3.1",
           "referenceType": "purl"
         }
       ],
