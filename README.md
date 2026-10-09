@@ -3,7 +3,7 @@ MCUXpresso SDK: FreeRTOS Kernel NXP Integration
 
 This repository is the NXP integration layer for the FreeRTOS kernel (https://github.com/FreeRTOS/FreeRTOS-Kernel). It allows original FreeRTOS kernel upstream sources build in MCUXpresso SDK. It is part of the MCUXpresso SDK overall delivery which is composed of several sub-repositories/projects. Navigate to the top/parent repository mcuxsdk-manifests(https://github.com/nxp-mcuxpresso/mcuxsdk-manifests) for the complete delivery of MCUXpresso SDK.
 
-For more information about the FreeRTOS kernel repo adoption see [README_mcuxsdk.md: FreeRTOS kernel for MCUXpresso SDK Readme](https://mcuxpresso.nxp.com/mcuxsdk/latest/html/rtos/freertos/freertos-kernel/README_mcuxsdk.html) document.
+For more information about the FreeRTOS kernel repo adoption see [README_mcuxsdk.md: FreeRTOS kernel for MCUXpresso SDK Readme](https://docs.mcuxpresso.nxp.com/mcuxsdk/latest/rtos/freertos/freertos-kernel/README_mcuxsdk.html) document.
 
 # FreeRTOS kernel for MCUXpresso SDK
 ## Overview
@@ -24,7 +24,7 @@ The FreeRTOS examples are written to demonstrate basic FreeRTOS features and the
 ### List of examples
 
 The list of freertos_examples, their description and availability for individual supported MCUXpresso SDK development boards can be obtained here:
-[https://mcuxpresso.nxp.com/mcuxsdk/latest/html/examples/freertos_examples/index.html](https://mcuxpresso.nxp.com/mcuxsdk/latest/html/examples/freertos_examples/index.html)
+[https://docs.mcuxpresso.nxp.com/mcuxsdk/latest/examples/freertos_examples/index.html](https://docs.mcuxpresso.nxp.com/mcuxsdk/latest/examples/freertos_examples/index.html)
 
 ### Location of examples
 
@@ -39,8 +39,8 @@ The FreeRTOS examples in MCUXpresso SDK zip packages are located in <MCUXpressoS
 ### Building a FreeRTOS example application
 
 For information how to use the cmake and Kconfig based build and configuration system and how to build freertos_examples visit:<p>
-[MCUXpresso SDK documentation for Build And Configuration](https://mcuxpresso.nxp.com/mcuxsdk/latest/html/develop/build_system/index.html)<p>
-[MCUXpresso SDK Getting Start Guide](https://mcuxpresso.nxp.com/mcuxsdk/latest/html/gsd/repo.html#gsd-index)<p>
+[MCUXpresso SDK documentation for Build And Configuration](https://docs.mcuxpresso.nxp.com/mcuxsdk/latest/develop/build_system/index.html)<p>
+[MCUXpresso SDK Getting Start Guide](https://docs.mcuxpresso.nxp.com/mcuxsdk/latest/gsd/repo.html#gsd-index)<p>
 
 Tip: To list all FreeRTOS example projects and targets that can be built via the west build command, use this west list_project command in mcuxsdk workspace:
 
